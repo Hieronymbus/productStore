@@ -1,6 +1,7 @@
-import React from 'react'
-import { Container, Flex, Text, Link, HStack, Button, useColorMode } from '@chakra-ui/react'
-import { PlusSquareIcon } from "@chakra-ui/icons"
+import React from 'react';
+import { Container, Flex, Text, HStack, Button, useColorMode } from '@chakra-ui/react';
+import { Link } from "react-router-dom"
+import { PlusSquareIcon } from "@chakra-ui/icons";
 import { IoMoon } from "react-icons/io5";
 import { LuSun } from "react-icons/lu";
 const NavBar = () => {
