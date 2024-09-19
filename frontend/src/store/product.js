@@ -30,6 +30,7 @@ export const useProductStore =  create((set) => ({
 		const data = await response.json();
 		if(!data.success) return ( { success:false, message: data.message } );
 
+		//update the UI imediatly, without needing a refresh
 		set(prev => ({ 
 			products: prev.products.filter((product)=>{
 				product._id !== pid
