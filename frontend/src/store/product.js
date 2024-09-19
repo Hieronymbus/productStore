@@ -22,5 +22,20 @@ export const useProductStore =  create((set) => ({
 		const response = await fetch("/api/products");
 		const data = await response.json();
 		set({ products: data.data })
+	},
+	deleteProduct: async (pid) => {
+		const response = await fetch(`/api/products/${pid}`,{
+			method: "DELETE",
+		})
+		const data = await response.json();
+		if(!data.success) return ( { success:false, message: data.message } );
+
+		set(prev => ({ 
+			products: prev.products.filter((product)=>{
+				product._id !== pid
+			})
+		}))
+
+		return { success: true, message: data.message}
 	}
 })) 
