@@ -29,16 +29,15 @@ const HomePage = () => {
           Current Products 🚀
         </Text>
 
-        <SimpleGrid 
-          columns={{
-            base:1,
-            ms:2,
-            lg:3
-          }}
-          spacing={10}
-          w={"full"}
-          
-        >
+        <SimpleGrid
+					columns={{
+						base: 1,
+						md: 2,
+						lg: 3,
+					}}
+					spacing={10}
+					w={"full"}
+				>
           {products.map((product,index)=> (
             <ProductCard 
               key={product._id} 
@@ -51,7 +50,7 @@ const HomePage = () => {
           )}
 
         </SimpleGrid>
-
+        {products.length === 0 && 
         <Text fontSize='xl' textAlign={"center"} fontWeight='bold' color='gray.500'>
           No products found 😢{" "}{/* {" "} adds a space between no products found and create a product text */}
           <Link to={"/create"}>
@@ -59,7 +58,8 @@ const HomePage = () => {
               Create a product
             </Text>
           </Link>
-        </Text>
+        </Text>}  
+        
       </VStack>
     </Container>
   )
