@@ -28,15 +28,35 @@ export const useProductStore =  create((set) => ({
 			method: "DELETE",
 		})
 		const data = await response.json();
-		if(!data.success) return ( { success:false, message: data.message } );
+		if(!data.success) return ( { success: false, message: data.message } );
 
 		//update the UI imediatly, without needing a refresh
 		set(prev => ({ 
 			products: prev.products.filter((product)=>{
-				product._id !== pid
+				return product._id !== pid
 			})
 		}))
 
 		return { success: true, message: data.message}
+	},
+	updateProduct: async (pid, updatedProduct) => {
+		const response = await fetch(`/api/products/${pid}`, {
+			method: "PUT",
+			headers: {
+				"Content-Type":"application/json"
+			},
+			body: JSON.stringify(updatedProduct)
+		} ) 
+		const data = await response.json();
+		if (!data.success) return ({ success: false, message: data.message});
+
+	//update the UI imediatly, without needing a refresh
+		set (prev => ({
+			products: prev.products.map(product => {
+				return product._id === pid ? data.data : product
+			})
+		}))
+
+		return { success: true, message: data.message };
 	}
 })) 

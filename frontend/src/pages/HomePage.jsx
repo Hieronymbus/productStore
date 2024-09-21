@@ -7,13 +7,12 @@ import ProductCard from '../components/ProductCard.jsx'
 
 const HomePage = () => {
   
-  const { fetchProducts, products } = useProductStore();
+  const { fetchProducts,products } = useProductStore();
 
   useEffect(() => {
     fetchProducts();
-
-
   },[fetchProducts])
+
   console.log("prodcuts:", products)
   
   return (
