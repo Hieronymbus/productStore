@@ -3,6 +3,9 @@
 - currrnt watch time 1:54:14
 - update .env with new MONGO_URI connect string. password changed and remember to specify collection name
 
+<<deploy>>
+- render.com: changed ip adress so had to enable all on mongo db. remember to put both the build and start command scripts.
+              free version. after activity stop 15 shuts down  
 <<BACKEND>>
 
  <dev>
