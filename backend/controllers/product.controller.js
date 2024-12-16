@@ -4,10 +4,10 @@ import mongoose from "mongoose";
 export const getProducts = async (request, response) => {
     try {
         const products = await Product.find({});
-        response.status(200).json({success:true,data:products})
+        response.status(200).json({success:true,data:products});
     } catch (error) {
-        console.log("error finding products", error.message)
-        response.status(500).json({successfalse,message:"Server Error"})
+        console.log("error finding products", error.message);
+        response.status(500).json({success:false, message: "Server Error"});
     }
 }
 
@@ -40,7 +40,7 @@ export const updateProduct = async (request, response) => {
     
     try {
         const updatedProduct = await Product.findByIdAndUpdate(id, product, {new: true})
-        response.status(200).json({ success:true, data:updatedProduct })
+        response.status(200).json({ success:true, data: updatedProduct })
     } catch (error) {
         response.status(500).json({ success:false, message:"Server Error" });
          
